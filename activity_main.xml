@@ -4,37 +4,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="100dp"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/editTxtName"
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/movieRelLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="鬼滅の刃"
+            android:id="@+id/checkboxKimetsu"
+            android:checked="false"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Spy Family"
+            android:id="@+id/checkboxSpy"
+            android:checked="false"
+            android:layout_toRightOf="@+id/checkboxKimetsu"
+            android:layout_marginLeft="15dp"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tokyo Revengers"
+            android:id="@+id/checkboxTokyo"
+            android:checked="false"
+            android:layout_toRightOf="@+id/checkboxSpy"
+            android:layout_marginLeft="15dp"/>
+
+
+    </RelativeLayout>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/movieRelLayout"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:id="@+id/rgMaritalStatus">
+
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Married"
+            android:id="@+id/rbMarried"
+            android:checked="true"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Single"
+            android:id="@+id/rbSingle"
+            android:layout_marginLeft="15dp"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="In a relationship"
+            android:id="@+id/rbInrel"
+            android:layout_marginLeft="15dp"/>
+
+
+
+
+
+    </RadioGroup>
+
+    <ProgressBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
         android:layout_centerInParent="true"
-        android:hint="Name"
-        android:textColor="@color/design_default_color_primary"
-        android:textStyle="italic|bold" />
+        android:visibility="visible"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:max="100"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
 
-    <Button
-        android:id="@+id/btnHello"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTxtName"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="20dp"
-        android:text="SAY HELLO" />
 
-    <TextView
-        android:id="@+id/txtHello"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnHello"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:text="Hello"
-        android:textColor="@color/design_default_color_primary"
-        android:textSize="20dp" />
 
 
 </RelativeLayout>
