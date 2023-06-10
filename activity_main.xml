@@ -1,91 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="100dp"
     tools:context=".MainActivity">
 
-
     <EditText
-        android:id="@+id/edTxtName"
-        android:layout_width="wrap_content"
+        android:id="@+id/editTxtName"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
-        android:ems="10"
+        android:layout_centerInParent="true"
         android:hint="Name"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/edTxtLastName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:ems="10"
-        android:hint="Last Name"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/edTxtName"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="@+id/edTxtName"
-        app:layout_constraintTop_toBottomOf="@+id/edTxtName" />
-
-    <EditText
-        android:id="@+id/edtTxtEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edTxtLastName" />
+        android:textColor="@color/design_default_color_primary"
+        android:textStyle="italic|bold" />
 
     <Button
-        android:id="@+id/btn_Reg"
+        android:id="@+id/btnHello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:onClick="onBtnClick"
-        android:text="Register"
-        app:layout_constraintEnd_toEndOf="@+id/edtTxtEmail"
-        app:layout_constraintStart_toStartOf="@+id/edtTxtEmail"
-        app:layout_constraintTop_toBottomOf="@+id/edtTxtEmail" />
+        android:layout_below="@+id/editTxtName"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:text="SAY HELLO" />
 
     <TextView
-        android:id="@+id/txtMsgName"
+        android:id="@+id/txtHello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:text="Name:"
-        app:layout_constraintEnd_toEndOf="@+id/btn_Reg"
-        app:layout_constraintStart_toStartOf="@+id/btn_Reg"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Reg" />
-
-    <TextView
-        android:id="@+id/txtMsgLastName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnHello"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:text="LastName:"
-        app:layout_constraintEnd_toEndOf="@+id/txtMsgName"
-        app:layout_constraintHorizontal_bias="0.518"
-        app:layout_constraintStart_toStartOf="@+id/txtMsgName"
-        app:layout_constraintTop_toBottomOf="@+id/txtMsgName" />
+        android:text="Hello"
+        android:textColor="@color/design_default_color_primary"
+        android:textSize="20dp" />
 
-    <TextView
-        android:id="@+id/txtMsgEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Email:"
-        app:layout_constraintEnd_toEndOf="@+id/txtMsgLastName"
-        app:layout_constraintHorizontal_bias="0.466"
-        app:layout_constraintStart_toStartOf="@+id/txtMsgLastName"
-        app:layout_constraintTop_toBottomOf="@+id/txtMsgLastName" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>
