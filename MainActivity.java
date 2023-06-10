@@ -1,32 +1,40 @@
-package com.example.helloandroid;
+package com.example.uibasic;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity
+        implements View.OnClickListener{
+
+    private EditText editTxtName;
+    private TextView txtHello;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button btnHello = findViewById(R.id.btnHello);
+        btnHello.setOnClickListener(this);
+
+        editTxtName = findViewById(R.id.editTxtName);
+        txtHello = findViewById(R.id.txtHello);
     }
 
-    public void onBtnClick(View view){
-
-        EditText edtTxName = findViewById(R.id.edTxtName);
-        EditText edtTxLastName = findViewById(R.id.edTxtLastName);
-        EditText edtTxEmail = findViewById(R.id.edtTxtEmail);
-
-        TextView txtName  = findViewById(R.id.txtMsgName);
-        TextView txtLastName  = findViewById(R.id.txtMsgLastName);
-        TextView txtEmail  = findViewById(R.id.txtMsgEmail);
-
-        txtName.setText("Name: " + edtTxName.getText().toString());
-        txtLastName.setText("Last Name: " + edtTxLastName.getText().toString());
-        txtEmail.setText("Email: " + edtTxEmail.getText().toString());
+    @Override
+    public void onClick(View view) {
+        if (view.getId()==R.id.btnHello){
+            Toast.makeText(this, "Hello Button Clicked",
+                    Toast.LENGTH_SHORT).show();
+            txtHello.setText("Hello " + editTxtName.getText().toString());
+        }
     }
 }
