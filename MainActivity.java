@@ -1,109 +1,83 @@
-package com.example.uibasic2;
+package com.example.listviewsample;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.ProgressBar;
-import android.widget.RadioGroup;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
-    private CheckBox checkBoxKimetsu, checkBoxSpy, checkBoxTokyo;
-    private RadioGroup rgMaritalStatus;
-    private ProgressBar progressBar;
+
+    private ListView citiesList;
+    private Spinner studentSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        checkBoxKimetsu = findViewById(R.id.checkboxKimetsu);
-        checkBoxSpy = findViewById(R.id.checkboxSpy);
-        checkBoxTokyo = findViewById(R.id.checkboxTokyo);
+        citiesList = findViewById(R.id.citiesList);
+        studentSpinner = findViewById(R.id.studentSpinner);
 
-        rgMaritalStatus = findViewById(R.id.rgMaritalStatus);
+        // Strings.xml で定義
+//        final ArrayList<String> students = new ArrayList<>();
+//        students.add("Bejimaru");
+//        students.add("Lisa");
+//        students.add("Rose");
+//        students.add("Jennie");
+//        students.add("Anya");
+//
+//        ArrayAdapter<String> studentsAdapter = new ArrayAdapter<>(
+//                this,
+//                android.R.layout.simple_spinner_dropdown_item,
+//                students
+//        );
+//        studentSpinner.setAdapter(studentsAdapter);
 
-        progressBar = findViewById(R.id.progressBar);
-
-        Thread thread = new Thread(new Runnable() {
+        studentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void run() {
-                for(int i = 0; i < 10; i++){
-                    progressBar.incrementProgressBy(10);
-                    SystemClock.sleep(500);
-                }
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                Toast.makeText(MainActivity.this,studentSpinner.getSelectedItem().toString() +
+                        " selected", Toast.LENGTH_SHORT).show();
             }
-        });
-        thread.start();
 
-        int checkedButton = rgMaritalStatus.getCheckedRadioButtonId();
-        if (checkedButton==R.id.rbMarried){
-            Toast.makeText(MainActivity.this, "Married", Toast.LENGTH_SHORT).show();
-        } else if (checkedButton==R.id.rbSingle) {
-            Toast.makeText(MainActivity.this, "Single", Toast.LENGTH_SHORT).show();
-        } else if (checkedButton==R.id.rbInrel) {
-            Toast.makeText(MainActivity.this, "In a relationship", Toast.LENGTH_SHORT).show();
-        }
-
-        rgMaritalStatus.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-                if (checkedId==R.id.rbMarried){
-                    Toast.makeText(MainActivity.this, "Married", Toast.LENGTH_SHORT).show();
-                } else if (checkedId==R.id.rbSingle) {
-                    Toast.makeText(MainActivity.this, "Single", Toast.LENGTH_SHORT).show();
-                } else if (checkedId==R.id.rbInrel) {
-                    Toast.makeText(MainActivity.this, "In a relationship", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-        checkBoxKimetsu.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                if (isChecked){
-                    Toast.makeText(MainActivity.this,
-                            "You have watched Kimetsu no Yaiba", Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(MainActivity.this,
-                            "You NEED to watch Kimetsu no Yaiba",Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-        checkBoxSpy.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                if(isChecked){
-                    Toast.makeText(MainActivity.this,
-                            "You have watched Spy Family", Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(MainActivity.this,
-                            "You NEED to watch Spy Family", Toast.LENGTH_SHORT).show();
-                }
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
 
-        checkBoxTokyo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+        ArrayList<String> cities = new ArrayList<>();
+        cities.add("Tokyo");
+        cities.add("Osaka");
+        cities.add("Kyoto");
+        cities.add("Hokkaido");
+        cities.add("Hiroshima");
+
+        // Fetch the data to List view
+        ArrayAdapter<String> citiesAdapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_list_item_1,
+                cities
+        );
+        // pass Adapter
+        citiesList.setAdapter(citiesAdapter);
+
+        citiesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                if(isChecked){
-                    Toast.makeText(MainActivity.this,
-                            "You have watched Tokyo Revengers", Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(MainActivity.this,
-                            "You NEED to watch Tokyo Revengers", Toast.LENGTH_SHORT).show();
-                }
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Toast.makeText(MainActivity.this, cities.get(position) +
+                        " selected", Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
 
     }
 }
