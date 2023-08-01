@@ -1,2 +1,2 @@
 # Sample-Android-Apps
-Beginner Android Samples
+Beginner Android Application Samples
