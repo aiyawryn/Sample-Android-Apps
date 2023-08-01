@@ -1,10 +1,4 @@
 <resources>
-    <string name="app_name">ListView sample</string>
-    <string-array name="students">
-        <item>Bejimaru</item>
-        <item>Lisa</item>
-        <item>Rose</item>
-        <item>Jennie</item>
-        <item>Anya</item>
-    </string-array>
+    <string name="app_name">お天気情報</string>
+    <string name="tv_winfo_title">お天気詳細</string>
 </resources>
